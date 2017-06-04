@@ -1,0 +1,14 @@
+jenkins_home:
+  build: .
+  volumes:
+    - /storage/jenkins_home:/var/jenkins_home
+jenkins:
+  image: jenkinsci/blueocean
+  volumes_from:
+    - nexus_home
+  restart: always
+  environment:
+    - VIRTUAL_HOST=jenkins.three-five.bshaw.io,jenkins.local
+    - VIRTUAL_PORT=8080
+    - LETSENCRYPT_HOST=jenkins.three-five.bshaw.io
+    - LETSENCRYPT_EMAIL=brian.b.shaw@gmail.com
