@@ -5,7 +5,7 @@ jenkins_home:
 jenkins:
   image: jenkinsci/blueocean
   volumes_from:
-    - nexus_home
+    - jenkins_home
   user: "10000:10000"
   restart: always
   environment:
