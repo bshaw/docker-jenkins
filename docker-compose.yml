@@ -2,6 +2,7 @@ jenkins_home:
   build: .
   volumes:
     - /storage/jenkins_home:/var/jenkins_home
+    - /var/run/docker.sock:/tmp/docker.sock
 jenkins:
   image: jenkinsci/blueocean
   volumes_from:
@@ -9,7 +10,7 @@ jenkins:
   user: "10000:10000"
   restart: always
   environment:
-    - VIRTUAL_HOST=jenkins.three-five.bshaw.io,jenkins.local
+    - VIRTUAL_HOST=jenkins.bshaw.io,jenkins.local
     - VIRTUAL_PORT=8080
-    - LETSENCRYPT_HOST=jenkins.three-five.bshaw.io
+    - LETSENCRYPT_HOST=jenkins.bshaw.io
     - LETSENCRYPT_EMAIL=brian.b.shaw@gmail.com
